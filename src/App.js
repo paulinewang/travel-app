@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import Search from "./components/Search";
-// import CountryGroup from "./components/CountryGroup";
+import CountryGroup from "./components/CountryGroup";
 
 function App() {
   const [allCountries, setAllCountries] = useState([]);
+  const [countriesByAlphabet, setCountriesByAlphabet] = useState([]);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -39,14 +40,15 @@ function App() {
         }
       }
     }
+    setCountriesByAlphabet(alphabeticallyGroupedCountries);
     console.log(alphabeticallyGroupedCountries);
-  });
+  }, [allCountries, setCountriesByAlphabet]);
 
   return (
     <div className="App">
       <h1>Travel app</h1>
       <Search />
-      {/* <CountryGroup countries={allCountries} /> */}
+      <CountryGroup sortedCountries={countriesByAlphabet} />
     </div>
   );
 }
