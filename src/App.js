@@ -41,7 +41,6 @@ function App() {
       }
     }
     setCountriesByAlphabet(alphabeticallyGroupedCountries);
-    console.log(alphabeticallyGroupedCountries);
   }, [allCountries, setCountriesByAlphabet]);
 
   return (
